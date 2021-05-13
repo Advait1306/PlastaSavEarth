@@ -185,12 +185,12 @@ def adamGD(batch, num_classes, lr, dim, n_c, beta1, beta2, params, cost):
 ##################### Training ######################
 #####################################################
 
-def train(num_classes = 10, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 28, img_depth = 1, f = 5, num_filt1 = 8, num_filt2 = 8, batch_size = 32, num_epochs = 2, save_path = 'params.pkl'):
+def train(num_classes = 2, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 50, img_depth = 3, f = 5, num_filt1 = 8, num_filt2 = 8, batch_size = 32, num_epochs = 2, save_path = 'params.pkl'):
 
     # training data
-    m =50000
-    X = extract_data('train-images-idx3-ubyte.gz', m, img_dim)
-    y_dash = extract_labels('train-labels-idx1-ubyte.gz', m).reshape(m,1)
+    m = 957
+    X = extract_data('dataset_50x50_MNIST/train-images-idx3-ubyte.gz', m, img_dim)
+    y_dash = extract_labels('dataset_50x50_MNIST/train-labels-idx1-ubyte.gz', m).reshape(m,1)
     X-= int(np.mean(X))
     X/= int(np.std(X))
     train_data = np.hstack((X,y_dash))
@@ -198,7 +198,7 @@ def train(num_classes = 10, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 28,
     np.random.shuffle(train_data)
 
     ## Initializing all the parameters
-    f1, f2, w3, w4 = (num_filt1 ,img_depth,f,f), (num_filt2 ,num_filt1,f,f), (128,800), (10, 128)
+    f1, f2, w3, w4 = (num_filt1 ,img_depth,f,f), (num_filt2 ,num_filt1,f,f), (128,3528), (2, 128)
     f1 = initializeFilter(f1)
     f2 = initializeFilter(f2)
     w3 = initializeWeight(w3)

@@ -34,21 +34,21 @@ if __name__ == '__main__':
     plt.show()
 
     # Get test data
-    m =10000
-    X = extract_data('t10k-images-idx3-ubyte.gz', m, 28)
-    y_dash = extract_labels('t10k-labels-idx1-ubyte.gz', m).reshape(m,1)
+    m = 144
+    X = extract_data('dataset_50x50_MNIST/t10k-images-idx3-ubyte.gz', m, 50)
+    y_dash = extract_labels('dataset_50x50_MNIST/t10k-labels-idx1-ubyte.gz', m).reshape(m,1)
     # Normalize the data
     X-= int(np.mean(X)) # subtract mean
     X/= int(np.std(X)) # divide by standard deviation
     test_data = np.hstack((X,y_dash))
     
     X = test_data[:,0:-1]
-    X = X.reshape(len(test_data), 1, 28, 28)
+    X = X.reshape(len(test_data), 3, 50, 50)
     y = test_data[:,-1]
 
     corr = 0
-    digit_count = [0 for i in range(10)]
-    digit_correct = [0 for i in range(10)]
+    digit_count = [0 for i in range(2)]
+    digit_correct = [0 for i in range(2)]
    
     print()
     print("Computing accuracy over test set:")

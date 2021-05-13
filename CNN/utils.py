@@ -21,9 +21,9 @@ def extract_data(filename, num_images, IMAGE_WIDTH):
     print('Extracting', filename)
     with gzip.open(filename) as bytestream:
         bytestream.read(16)
-        buf = bytestream.read(IMAGE_WIDTH * IMAGE_WIDTH * num_images)
+        buf = bytestream.read(3 * IMAGE_WIDTH * IMAGE_WIDTH * num_images)
         data = np.frombuffer(buf, dtype=np.uint8).astype(np.float32)
-        data = data.reshape(num_images, IMAGE_WIDTH*IMAGE_WIDTH)
+        data = data.reshape(num_images, 3*IMAGE_WIDTH*IMAGE_WIDTH)
         return data
 
 def extract_labels(filename, num_images):

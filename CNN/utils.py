@@ -78,7 +78,7 @@ def predict(image, f1, f2, w3, w4, b1, b2, b3, b4, conv_s = 1, pool_f = 2, pool_
     out = w4.dot(z) + b4 # second dense layer
     probs = sigmoid(out) # predict class probabilities with the softmax activation function
     
-    if(probs < 0.7):
+    if(probs < 0.5):
         return (0, probs)
     else:
         return (1, probs)

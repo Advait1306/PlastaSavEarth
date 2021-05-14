@@ -16,9 +16,10 @@ if __name__ == '__main__':
     
     params, cost = pickle.load(open(save_path, 'rb'))
     [f1, f2, w3, w4, b1, b2, b3, b4] = params
-    
 
-    X = asarray(Image.open('test_images/plastic (2).jpg'))
+    image = Image.open('test_images/plastic3.jpg')
+    new_image = image.resize((50, 50))
+    X = asarray(new_image)
     img = Image.fromarray(X)
     img.show()
 

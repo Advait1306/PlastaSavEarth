@@ -1,9 +1,5 @@
 '''
 Description: methods to set up and train the network's parameters.
-
-Author: Alejandro Escontrela
-Version: V.1.
-Date: June 12th, 2018
 '''
 from CNN.forward import *
 from CNN.backward import *
@@ -142,7 +138,7 @@ def adamGD(batch, num_classes, lr, dim, n_c, beta1, beta2, params, cost):
     # Parameter Update  
         
     v1 = beta1*v1 + (1-beta1)*df1/batch_size # momentum update
-    s1 = beta2*s1 + (1-beta2)*(df1/batch_size)**2 # RMSProp update
+    s1 = beta2*s1 + (1-beta2)*(df1/batch_size)**2 # RMSProp update (learning rate schedule - root mean squared Propogations)
     f1 -= lr * v1/np.sqrt(s1+1e-7) # combine momentum and RMSProp to perform update with Adam
     
     bv1 = beta1*bv1 + (1-beta1)*db1/batch_size

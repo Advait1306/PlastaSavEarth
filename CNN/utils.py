@@ -1,9 +1,5 @@
 '''
 Description: Utility methods for a Convolutional Neural Network
-
-Author: Alejandro Escontrela
-Version: V.1.
-Date: June 12th, 2018
 '''
 from CNN.forward import *
 import numpy as np

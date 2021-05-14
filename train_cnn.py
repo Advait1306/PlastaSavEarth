@@ -1,9 +1,5 @@
 '''
 Description: Script to train the network and measure its performance on the test set.
-
-Author: Alejandro Escontrela
-Version: V.1.
-Date: June 12th, 2018
 '''
 from CNN.network import *
 from CNN.utils import *

@@ -18,7 +18,7 @@ if __name__ == '__main__':
     [f1, f2, w3, w4, b1, b2, b3, b4] = params
     
 
-    X = asarray(Image.open('plastic (2).jpg'))
+    X = asarray(Image.open('test_images/plastic (2).jpg'))
     img = Image.fromarray(X)
     img.show()
 

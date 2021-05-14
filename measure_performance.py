@@ -25,8 +25,8 @@ if __name__ == '__main__':
     image -= int(np.mean(image))
     image /= int(np.std(image))
     print(y_dash[image_number])
-    plt.imshow(image)
-    plt.show()
+    # plt.imshow(image)
+    # plt.show()
     
     # Normalize the data
     X-= int(np.mean(X)) # subtract mean
@@ -73,4 +73,4 @@ if __name__ == '__main__':
     plt.ylabel('Recall')
     plt.title("Recall on Test Set")
     #plt.bar(x,digit_recall)
-    plt.show()
+    #plt.show()

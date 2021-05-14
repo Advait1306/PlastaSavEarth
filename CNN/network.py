@@ -39,7 +39,7 @@ def conv(image, label, params, conv_s, pool_f, pool_s):
     
     out = w4.dot(z) + b4 # second dense layer
      
-    probs = softmax(out) # predict class probabilities with the softmax activation function
+    probs = sigmoid(out) # predict class probabilities with the softmax activation function
     
     ################################################
     #################### Loss ######################
@@ -122,7 +122,7 @@ def adamGD(batch, num_classes, lr, dim, n_c, beta1, beta2, params, cost):
     for i in range(batch_size):
         
         x = X[i]
-        y = np.eye(num_classes)[int(Y[i])].reshape(num_classes, 1) # convert label to one-hot
+        y = Y[i] #np.eye(num_classes)[int(Y[i])].reshape(num_classes, 1) # convert label to one-hot
         
         # Collect Gradients for training example
         grads, loss = conv(x, y, params, 1, 2, 2)
@@ -185,7 +185,7 @@ def adamGD(batch, num_classes, lr, dim, n_c, beta1, beta2, params, cost):
 ##################### Training ######################
 #####################################################
 
-def train(num_classes = 2, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 50, img_depth = 3, f = 5, num_filt1 = 8, num_filt2 = 8, batch_size = 32, num_epochs = 2, save_path = 'params.pkl'):
+def train(num_classes = 1, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 50, img_depth = 3, f = 5, num_filt1 = 8, num_filt2 = 8, batch_size = 32, num_epochs = 2, save_path = 'params.pkl'):
 
     # training data
     m = 957
@@ -198,7 +198,7 @@ def train(num_classes = 2, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 50, 
     np.random.shuffle(train_data)
 
     ## Initializing all the parameters
-    f1, f2, w3, w4 = (num_filt1 ,img_depth,f,f), (num_filt2 ,num_filt1,f,f), (128,3528), (2, 128)
+    f1, f2, w3, w4 = (num_filt1 ,img_depth,f,f), (num_filt2 ,num_filt1,f,f), (128,3528), (1, 128)
     f1 = initializeFilter(f1)
     f2 = initializeFilter(f2)
     w3 = initializeWeight(w3)

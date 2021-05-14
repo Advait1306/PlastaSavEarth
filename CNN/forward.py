@@ -67,6 +67,9 @@ def softmax(X):
     out = np.exp(X)
     return out/np.sum(out)
 
+def sigmoid(X):
+    return 1/(1+np.exp(-X))
+
 def categoricalCrossEntropy(probs, label):
     return -np.sum(label * np.log(probs))
 

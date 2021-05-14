@@ -19,7 +19,9 @@ if __name__ == '__main__':
     
 
     X = asarray(Image.open('image_non.jpg'))
-    print(X.shape)
+    img = Image.fromarray(X)
+    img.show()
+
     # Normalize the data
     X_= X - int(np.mean(X)) # subtract mean
     X_ = X_ /int(np.std(X_)) # divide by standard deviation

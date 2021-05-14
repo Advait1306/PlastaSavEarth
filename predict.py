@@ -30,5 +30,7 @@ if __name__ == '__main__':
 
     pred, prob = predict(X_, f1, f2, w3, w4, b1, b2, b3, b4)
 
-    print(pred)
-    print(prob)
+    if(pred == 1): 
+        print("Plastic")
+    else:
+        print("non-plastic")
